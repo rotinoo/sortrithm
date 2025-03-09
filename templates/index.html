@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sortrithm</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <script src="/static/js/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sortrithm</h1>
+        <label for="arrayInput">Masukan list angka (dipisah koma):</label>
+        <input type="text" id="arrayInput" placeholder="Contoh. 5,3,8,4,2">
+        
+        <label for="algorithm">Pilih Algoritma Sorting:</label>
+        <select id="algorithm">
+            <option value="bogo">Bogosort Sort</option>
+            <option value="soon">soon</option>
+        </select>
+        
+        <button id="button" onclick="sortArray()">Sort</button>
+         
+        <h2>Results:</h2>
+        <p id="iterations"></p>
+        <p id="sortedArray"></p>
+    </div>
+</body>
+</html>
