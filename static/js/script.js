@@ -10,6 +10,8 @@ async function sortArray() {
 
     const array = arrayInput.split(",").map(num => parseInt(num.trim(), 10));
 
+    sortButton.disabled = true;
+
     if (algorithm === "bogo") {
         try {
             const response = await fetch("/bogo", {
@@ -31,4 +33,6 @@ async function sortArray() {
     } else {
         alert("Algoritma belum tersedia!");
     }
+
+    sortButton.disabled = false;
 }
