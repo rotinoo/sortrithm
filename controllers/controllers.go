@@ -34,3 +34,15 @@ func BogoSort(c *gin.Context) {
 	result := sort.BogoSort(requestData.Array)
 	c.IndentedJSON(http.StatusOK, result)
 }
+
+func SelectionSort(c *gin.Context) {
+	var requestData RequestData
+
+	if err := c.BindJSON(&requestData); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid JSON input"})
+		return
+	}
+
+	result := sort.SelectionSort(requestData.Array)
+	c.IndentedJSON(http.StatusOK, result)
+}

@@ -10,4 +10,5 @@ func InitializeRoutes(router *gin.Engine) {
 	router.GET("/", controllers.ShowIndexPage)
 	router.GET("/bogorand", controllers.BogoSortRand)
 	router.POST("/bogo", controllers.BogoSort)
+	router.POST("/selection", controllers.SelectionSort)
 }

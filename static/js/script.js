@@ -9,12 +9,12 @@ async function sortArray() {
     }
 
     const array = arrayInput.split(",").map(num => parseInt(num.trim(), 10));
-
+    const validAlgorithms = ["bogo", "selection"];
     sortButton.disabled = true;
 
-    if (algorithm === "bogo") {
+    if (validAlgorithms.includes(algorithm)) {
         try {
-            const response = await fetch("/bogo", {
+            const response = await fetch(`/${algorithm}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ array })

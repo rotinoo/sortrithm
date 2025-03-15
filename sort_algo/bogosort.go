@@ -34,19 +34,19 @@ type Data1 struct {
 	Sorted    []int `json:"sorted"`
 }
 
-type Data2 struct {
+type Data struct {
 	Iteration int   `json:"iteration"`
 	Sorted    []int `json:"sorted"`
 }
 
-func BogoSort(data []int) Data2 {
+func BogoSort(data []int) Data {
 
 	iteration := 0
 	for !isSorted(data) {
 		shuffle(data)
 		iteration++
 	}
-	return Data2{
+	return Data{
 		Iteration: iteration,
 		Sorted:    data,
 	}
