@@ -1,30 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sortrithm</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
-    <script src="/static/js/script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sortrithm</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/styles.css?v1.0" />
+  <script src="/static/js/script.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch(`/static/var.txt?timestamp=${new Date().getTime()}`)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById("webserverid").innerHTML = "ini dijalankan di server #" + data;
+        })
+        .catch(error => {
+          console.error('Error fetching the file:', error);
+          document.getElementById("webserverid").innerHTML = "Error loading content.";
+        });
+
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        document.body.classList.toggle("light-theme");
+      });
+    });
+  </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Sortrithm</h1>
+  <div class="topbar">
+    <div class="title-section">
+      <span class="title-text">Sortrithm</span>
+      <button id="themeToggle">🌗</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Sorting Algorithm Visualizer</h1>
+
+    <div class="form-container">
+      <div class="form-group">
         <label for="arrayInput">Masukan list angka (dipisah koma):</label>
         <input type="text" id="arrayInput" placeholder="Contoh. 5,3,8,4,2">
-        
+      </div>
+
+      <div class="form-group">
         <label for="algorithm">Pilih Algoritma Pengurutan:</label>
         <select id="algorithm">
-            <option value="bogo">Bogosort Sort</option>
-            <option value="selection">Selection Sort</option>
-            <option value="soon">soon</option>
+          <option value="bogo">Bogosort Sort</option>
+          <option value="selection">Selection Sort</option>
+          <option value="soon">soon</option>
         </select>
-        
-        <button id="button" onclick="sortArray()">Sort</button>
-         
-        <h2>Results:</h2>
-        <p id="iterations"></p>
-        <p id="sortedArray"></p>
+      </div>
+
+      <button id="button" onclick="sortArray()">Sort</button>
     </div>
+
+    <h2>Results:</h2>
+    <p id="iterations"></p>
+    <p id="sortedArray"></p>
+  </div>
+
+  <div class="footer">
+    <h2 id="webserverid"></h2>
+  </div>
 </body>
 </html>

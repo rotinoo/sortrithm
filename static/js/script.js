@@ -1,8 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("webserverid").innerHTML = "luthu";
+});
+
 async function sortArray() {
     const arrayInput = document.getElementById("arrayInput").value;
     const algorithm = document.getElementById("algorithm").value;
     const sortButton = document.querySelector("button");
-
+    
     if (!arrayInput) {
         alert("Masukkan list angka terlebih dahulu!");
         return;
